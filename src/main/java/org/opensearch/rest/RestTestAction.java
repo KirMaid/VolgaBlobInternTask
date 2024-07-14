@@ -1,18 +1,16 @@
-package org.example;
+package org.opensearch.rest;
 
 import org.opensearch.client.node.NodeClient;
-import org.opensearch.rest.BaseRestHandler;
-import org.opensearch.rest.RestRequest;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public class RestHandler extends BaseRestHandler {
+public class RestTestAction extends BaseRestHandler {
 
     @Override
     public String getName() {
-        return "rest_handler";
+        return "rest_handler_test";
     }
 
     @Override
@@ -23,7 +21,7 @@ public class RestHandler extends BaseRestHandler {
     @Override
     public List<Route> routes() {
         return Collections.singletonList(
-                new Route(RestRequest.Method.GET, "/_test_plugin/statistics")
+                new Route(RestRequest.Method.GET, "/_plugins/statistics")
         );
     }
 }

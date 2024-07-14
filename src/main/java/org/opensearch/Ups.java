@@ -1,4 +1,4 @@
-package org.example;
+package org.opensearch;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -20,7 +20,6 @@ public class Ups {
     @SerializedName("ups_adv_output_voltage")
     private int upsAdvOutputVoltage;
 
-    // Геттеры и сеттеры
     public int getUpsAdvOutputLoad() {
         return upsAdvOutputLoad;
     }

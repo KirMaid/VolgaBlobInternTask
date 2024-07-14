@@ -1,9 +1,8 @@
-package org.example;
+package org.opensearch.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.opensearch.plugins.ActionPlugin;
-import org.opensearch.plugins.Plugin;
+import org.opensearch.Ups;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +10,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestPlugin extends Plugin implements ActionPlugin {
+public class TestService {
+
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Usage: java Main <path to JSON file>");
@@ -22,7 +22,8 @@ public class TestPlugin extends Plugin implements ActionPlugin {
         Gson gson = new Gson();
 
         try (FileReader reader = new FileReader(filePath)) {
-            Type listType = new TypeToken<ArrayList<Ups>>(){}.getType();
+            Type listType = new TypeToken<ArrayList<Ups>>() {
+            }.getType();
             List<Ups> statuses = gson.fromJson(reader, listType);
 
             double avgRunTime = calculateAverageRunTime(statuses);
@@ -39,9 +40,10 @@ public class TestPlugin extends Plugin implements ActionPlugin {
     }
 
     /**
+     * Функция для расчёта среднего времени запуска
      *
      * @param statuses
-     * @return
+     * @return avg
      */
     private static double calculateAverageRunTime(List<Ups> statuses) {
         return statuses.stream()
@@ -51,7 +53,6 @@ public class TestPlugin extends Plugin implements ActionPlugin {
     }
 
     /**
-     *
      * @param statuses
      * @return
      */
@@ -63,7 +64,6 @@ public class TestPlugin extends Plugin implements ActionPlugin {
     }
 
     /**
-     *
      * @param statuses
      * @return
      */
